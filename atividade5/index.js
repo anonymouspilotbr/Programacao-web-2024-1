@@ -2,6 +2,10 @@ const express = require('express');
 const estoque = require('./src/estoque');
 const app = express();
 
+app.get('/', function(req, res){
+    res.send('Página inicial\n Gerenciamento de estoque');
+});
+
 app.get('/adicionar/:id/:nome/:qtd', function(req,res) {
     let id = req.params.id;
     let nome = req.params.nome;
@@ -19,6 +23,13 @@ app.get('/remover/:id', function (req, res){
     let id = req.params.id;
     estoque.removerProduto(id);
     res.send(id);
+})
+
+app.get('/editar/:id/:qtd', function (req, res) {
+    let id = req.params.id;
+    let qtd = req.params.qtd;
+    let p = estoque.editarProduto(id, qtd);
+    res.send(p);
 })
 
 const PORT = 8080;
