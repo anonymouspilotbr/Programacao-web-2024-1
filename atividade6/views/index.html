@@ -18,22 +18,22 @@
         </div>
         <article>
             <h1>Formulário de Dados</h1>
-            <form class="row g-3" action=".\dados.html" method="post">
+            <form id="myForm" class="row g-3" action="/dados" method="post">
                 <div class="col-md-6">
                     <label for="inputName" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="inputName">
+                    <input type="text" class="form-control" id="inputName" name="inputName">
                 </div>
                 <div class="col-md-6">
                     <label for="inputPhone" class="form-label">Telefone</label>
-                    <input type="text" class="form-control" id="inputPhone">
+                    <input type="text" class="form-control" id="inputPhone" name="inputPhone">
                 </div>
                 <div class="col-12">
                     <label for="inputAddress" class="form-label">Endereço</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="Rua Fulano de Tal 123">
+                    <input type="text" class="form-control" id="inputAddress" name="inputAddress" placeholder="Rua Fulano de Tal 123">
                 </div>
                 <div class="col-md-4">
                     <label for="inputDate" class="form-label">Data do agendamento</label>
-                    <input type="date" class="form-control" id="inputDate">
+                    <input type="date" class="form-control" id="inputDate" name="inputDate">
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Enviar</button>
@@ -41,5 +41,25 @@
             </form>
         </article>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("myForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                let nome = document.getElementById("inputName").value
+                console.log(nome);
+                let endereco = document.getElementById("inputAddress").value
+                let telefone = document.getElementById("inputPhone").value
+                let dataAg = document.getElementById("inputDate").value
+                
+                let params = new URLSearchParams();
+                params.append('nome', nome);
+                params.append('endereco', endereco);
+                params.append('telefone', telefone);
+                params.append('dataAg', dataAg);
+
+                window.location.href = "dados.html?" + params.toString();
+            });
+        });
+    </script>
 </body>
 </html>
