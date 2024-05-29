@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+body{
+    max-width: 1100px;
+    margin: auto;
+    background-color: white;
+    padding-bottom: 20px;
+    border-radius: 0px 0px 15px 15px;
+    box-shadow: 8px 6px 10px black;
+}
+
+h1{
+    text-align: center;
+}
+
+html{
+    background-color: rgb(33, 33, 59);
+}
+
+article{
+    padding: 10px 10px 10px 10px;
+}
